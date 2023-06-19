@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SearchBar from "./Component/SearchBar";
+import ListQuestion from "./Component/ListQuestion";
+import SubmitResponse from "./Component/SubmitResponse";
 
 function App() {
+  const [botResponse, setBotResponse] = useState({});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex justify-center align-center h-screen">
+      <div className="w-1/2 mt-auto">
+        <SearchBar setBotResponse={setBotResponse} />
+        <ListQuestion botResponse={botResponse} />
+        <SubmitResponse/>
+      </div>
     </div>
   );
 }
