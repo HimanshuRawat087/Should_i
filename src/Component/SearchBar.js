@@ -9,8 +9,7 @@ function SearchBar(props) {
     setUserInput(event.target.value);
   };
 
-  const handleSearchClick = (event) => {
-    event.preventDefault(); 
+  const handleSearchClick = () => {
     if (userInput.trim().length < 20) {
       return;
     };
@@ -63,7 +62,7 @@ function SearchBar(props) {
           required
         />
         <button
-          type="submit"
+          type="button"
           onClick={handleSearchClick}
           className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
