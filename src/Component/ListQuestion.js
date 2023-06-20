@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ListQuestion(props) {
-  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const renderOptions = (options, questionIndex) =>
     options.map((option, optionIndex) => (
@@ -10,10 +9,6 @@ function ListQuestion(props) {
           id={`checkbox-${questionIndex}-${optionIndex}`}
           type="checkbox"
           value=""
-          onChange={(event) =>
-            handleOptionChange(event, questionIndex, optionIndex)
-          }
-          checked={selectedOptions[questionIndex] === optionIndex}
           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
         />
         <label
@@ -25,19 +20,6 @@ function ListQuestion(props) {
         </label>
       </div>
     ));
-
-  const handleOptionChange = (event, questionIndex, optionIndex) => {
-    const isChecked = event.target.checked;
-    setSelectedOptions((prevOptions) => {
-      const updatedOptions = [...prevOptions];
-      if (isChecked) {
-        updatedOptions[questionIndex] = optionIndex;
-      } else {
-        updatedOptions[questionIndex] = null;
-      }
-      return updatedOptions;
-    });
-  };
 
   const renderQuestions = (questions) =>
     questions &&

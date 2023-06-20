@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import "tailwindcss/tailwind.css";
 
-function SearchBar({ setBotResponse }) {
+function SearchBar(props) {
   const [userInput, setUserInput] = useState("");
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = (event) => {
+    event.preventDefault(); 
     if (userInput.trim().length < 20) {
       return;
     };
-    setBotResponse({
+    props.setBotResponse({
       questions: [
         {
           title: "Title1",
